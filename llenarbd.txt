@@ -1,0 +1,58 @@
+-- Categories
+INSERT INTO category VALUES (1, 'Frutas y verduras', true);
+INSERT INTO category VALUES (2, 'Pastelería', true);
+INSERT INTO category VALUES (3, 'Carnes y pescados', true);
+INSERT INTO category VALUES (4, 'Lácteos y huevos', true);
+INSERT INTO category VALUES (5, 'Bebidas', true);
+INSERT INTO category VALUES (6, 'Licores', true);
+INSERT INTO category VALUES (7, 'Cuidado personal', true);
+INSERT INTO category VALUES (8, 'Despensa', true);
+
+-- Products
+INSERT INTO product VALUES (1, 'Guayaba Feijoa', 1, '7029 A42 23', 300, 500, true);
+INSERT INTO product VALUES (2, 'Mango', 1, '7019 A42 23', 2100, 250, true);
+INSERT INTO product VALUES (3, 'Manzana', 1, '7039 A42 23', 700, 130, true);
+INSERT INTO product VALUES (4, 'Aguacate', 1, '7049 A42 23', 2500, 98, true);
+INSERT INTO product VALUES (5, 'Lechuga', 1, '7059 A42 23', 4000, 86, true);
+INSERT INTO product VALUES (6, 'Tomate', 1, '7069 A42 23', 290, 430, true);
+INSERT INTO product VALUES (7, 'Pera', 1, '7079 A42 23', 750, 210, true);
+INSERT INTO product VALUES (8, 'Apio', 1, '7089 A42 23', 150, 115, true);
+INSERT INTO product VALUES (9, 'Papaya', 1, '7099 A42 23', 4500, 73, true);
+INSERT INTO product VALUES (10, 'Limón', 1, '7009 A42 23', 350, 425, true);
+INSERT INTO product VALUES (11, 'Brownie', 2, '7119 A42 23', 2500, 80, true);
+INSERT INTO product VALUES (12, 'Pan tajado', 2, '7229 A42 23', 4500, 120, true);
+INSERT INTO product VALUES (13, 'Torta', 2, '7339 A42 23', 10000, 35, true);
+INSERT INTO product VALUES (14, 'Tortilla', 2, '7449 A42 23', 6400, 87, true);
+INSERT INTO product VALUES (15, 'Tostadas', 2, '7559 A42 23', 4000, 45, true);
+INSERT INTO product VALUES (16, 'Chocorramo', 2, '7669 A42 23', 2000, 105, true);
+INSERT INTO product VALUES (17, 'Salmón', 3, '7779 A42 23', 28000, 55, true);
+INSERT INTO product VALUES (18, 'Punta de anca', 3, '7889 A42 23', 12000, 32, true);
+INSERT INTO product VALUES (19, 'Pasta', 3, '7999 A42 23', 7800, 40, true);
+INSERT INTO product VALUES (20, 'Leche', 4, '8999 A42 23', 2800, 20, true);
+INSERT INTO product VALUES (21, 'yogurt', 4, '8199 A42 23', 800, 50, true);
+INSERT INTO product VALUES (22, 'Gaseosa', 5, '8299 A42 23', 7800, 40, true);
+INSERT INTO product VALUES (23, 'Cerveza', 6, '8399 A42 23', 7800, 40, true);
+INSERT INTO product VALUES (24, 'Jabón', 7, '1199 A42 23', 8800, 40, true);
+INSERT INTO product VALUES (25, 'Atún', 8, '2299 A42 23', 9900, 40, true);
+
+-- Clients
+INSERT INTO client VALUES ('7548141', 'Johannes', 'Kepler', 1214521412, 'Cl 1 # 33 - 31', 'kepler@gmail.com');
+INSERT INTO client VALUES ('7548142', 'Luis', 'Cortéz', 2214521412, 'Cl 2 # 33 - 32', 'luis@gmail.com');
+INSERT INTO client VALUES ('7548143', 'Enrique', 'Ramos', 3214521412, 'Cl 3 # 33 - 33', 'enrique@gmail.com');
+INSERT INTO client VALUES ('7548144', 'Sergio', 'Soto', 4214521412, 'Cl 4 # 33 - 34', 'sergio@gmail.com');
+INSERT INTO client VALUES ('7548145', 'María', 'Prado', 5214521412, 'Cl 5 # 33 - 35', 'maria@gmail.com');
+
+-- Shoppings
+INSERT INTO  shopping VALUES (1, '7548141', '10/08/1992 17:30:00', 'E', '', 'P');
+
+-- Shopping products
+INSERT INTO  shopping_product VALUES (1, 1, 10, 3000, true);
+INSERT INTO  shopping_product VALUES (1, 10, 1, 40000, true);
+INSERT INTO  shopping_product VALUES (1, 15, 1, 9000, true);
+INSERT INTO  shopping_product VALUES (1, 19, 2, 16400, true);
+INSERT INTO  shopping_product VALUES (1, 8, 1, 4000, true);
+
+-- Se reinician las secuencias según los datos iniciales
+SELECT setval ('public.product_id_product_seq', 25, true);
+SELECT setval ('public.category_id_category_seq', 8, true);
+SELECT setval ('public.shopping_id_shopping_seq', 1, true);

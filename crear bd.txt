@@ -1,0 +1,91 @@
+-- ------------------------------------------------
+-- Table "CATEGORY"
+-- ------------------------------------------------
+
+CREATE TABLE category(
+	"id_category" SERIAL NOT NULL,
+	"description" VARCHAR(45) NOT NULL,
+	"status" BOOLEAN NOT NULL,
+	
+	PRIMARY KEY("id_category")
+);
+
+-- ----------------------------------------------
+-- Table "PRODUCT"
+-- ----------------------------------------------
+
+CREATE TABLE product (
+	"id_product" SERIAL NOT NULL,
+	"name" VARCHAR (45) NOT NULL,
+	"id_category" INT NOT NULL,
+	"barcode" VARCHAR (150) NOT NULL,
+	"sale_price" DECIMAL (16,2) NOT NULL,
+	"stock" INT NOT NULL,
+	"status" BOOLEAN NOT NULL,
+	
+	PRIMARY KEY ("id_product"),
+	CONSTRAINT "fk_product_category"
+		FOREIGN KEY ("id_category")
+		REFERENCES category ("id_category")
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------
+-- Table "CLIENT"
+-- ----------------------------------------------
+
+CREATE TABLE client(
+	"id_client" VARCHAR(20) NOT NULL,
+	"name" VARCHAR(40) NOT NULL,
+	"lastname" VARCHAR(100) NOT NULL,
+	"cellphone" DECIMAL NULL,
+	"address" VARCHAR(80) NULL,
+	"email" VARCHAR(70) NULL,
+	
+	PRIMARY KEY("id_client")
+);
+
+-- ----------------------------------------------
+-- Table "SHOPPING"
+-- ----------------------------------------------
+
+CREATE TABLE shopping(
+	"id_shopping" SERIAL NOT NULL,
+	"id_client" VARCHAR(20) NOT NULL,
+	"date" DATE NOT NULL,
+	"payment_method" CHAR(1) NOT NULL,
+	"commentary" VARCHAR(300) NULL,
+	"status" CHAR(1) NOT NULL,
+	
+	PRIMARY KEY(id_shopping),
+	FOREIGN KEY("id_client")
+	REFERENCES client("id_client")
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+);
+
+-- ----------------------------------------------
+-- Table "SHOPPING_PRODUCT"
+-- ----------------------------------------------
+
+CREATE TABLE shopping_product(
+	"id_shopping" INT NOT NULL,
+	"id_product" INT NOT NULL,
+	"quantity" INT NOT NULL,
+	"total" DECIMAL(16,2) NOT NULL,
+	"status" BOOLEAN NOT NULL,
+	
+	PRIMARY KEY("id_shopping", "id_product"),
+	CONSTRAINT "fk_product"
+		FOREIGN KEY("id_product") 
+		REFERENCES product("id_product")
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION,
+
+	CONSTRAINT "fk_shopping"
+		FOREIGN KEY("id_shopping") 
+		REFERENCES shopping("id_shopping")
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
